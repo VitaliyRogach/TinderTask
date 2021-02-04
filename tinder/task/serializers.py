@@ -7,7 +7,7 @@ class UserSerializer(serializers.ModelSerializer):
     """Сериализатор для отображения юзера"""
     class Meta:
         model = User
-        fields = ['username', 'password']
+        fields = '__all__'
 
 
 class ProfileSerializer(serializers.ModelSerializer):
@@ -16,7 +16,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserInf
-        fields = ['user', 'image', 'name', 'surname', ]
+        fields = '__all__'
 
 
 class CreateProfileSerializer(serializers.ModelSerializer):

@@ -25,17 +25,17 @@ class UserInf(models.Model):
 class Content(models.Model):
     profile = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Профиль')
     image = models.ImageField(upload_to='media/')
-    description = models.CharField("Discription",max_length=3000)
+    description = models.CharField("Discription", max_length=3000)
 
     def __str__(self):
         return self.description
 
-@receiver(post_save, sender=User)
-def save_or_create_profile(sender, instance, created, **kwargs):
-    if created:
-        UserInf.objects.create(user=instance)
-    else:
-        try:
-            instance.profile.save()
-        except ObjectDoesNotExist:
-            UserInf.objects.create(user=instance)
+# @receiver(post_save, sender=User)
+# def save_or_create_profile(sender, instance, created, **kwargs):
+#     if created:
+#         UserInf.objects.create(user=instance)
+#     else:
+#         try:
+#             instance.profile.save()
+#         except ObjectDoesNotExist:
+#             UserInf.objects.create(user=instance)

@@ -1,12 +1,14 @@
+from django.conf.urls.static import static
+from django.contrib import admin
 from django.urls import path, include
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-
-import views
+from django.conf import settings
 
 urlpatterns = [
-    path('token/', TokenObtainPairView.as_view()),
-    path('token/refresh/', TokenRefreshView.as_view()),
-    path('profiles/', ProfileListView.as_view()),
-    path('profiles/add/', AddContentCreateView.as_view()),
+    path('admin/', admin.site.urls),
+    path('api/v1/', include('task.urls')),
+
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

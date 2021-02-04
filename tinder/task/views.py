@@ -7,7 +7,6 @@ from task import service
 
 class ProfileListView(generics.ListAPIView):
     serializer_class = ProfileSerializer
-    queryset = ''
 
     def get_queryset(self):
         return service.filter_group(request=self.request)
