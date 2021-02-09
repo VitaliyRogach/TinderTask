@@ -3,6 +3,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 
 def filter_group(request):
+    """Функция фильтрации пользователей на 3 уровня доступа(Base, Premium, Vip)"""
     from .models import User
 
     if User.objects.get(name=request.user).group == 'base':
@@ -14,6 +15,3 @@ def filter_group(request):
     else:
         print('no')
 
-# def comment(request):
-#     from .models import User
-#     comment_text = User.objects.get(comment=request.comment)

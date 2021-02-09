@@ -10,8 +10,8 @@ urlpatterns = [
     path('token/refresh/', TokenRefreshView.as_view()),
 
     path('profiles/create/', CreateProfile.as_view()),
-    path('profiles/add/content/', AddContentCreateView.as_view()),
-    path('profiles/list', ProfileListView.as_view()),
+    path('profiles/list/', ProfileListView.as_view()),
 
+    path('like/', LikeView.as_view()),
 
 ]
