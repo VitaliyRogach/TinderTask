@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'task',
     'rest_framework',
     'djoser',
+    'django.contrib.gis',
 ]
 
 MIDDLEWARE = [
@@ -79,7 +80,7 @@ WSGI_APPLICATION = 'tinder.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'tinder',
         'USER': 'postgres',
         'PASSWORD': 'qwerty',
@@ -133,8 +134,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        # 'rest_framework.permissions.IsAdminUser',
-        # 'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.IsAdminUser',
+        'rest_framework.permissions.IsAuthenticated',
         'rest_framework.permissions.AllowAny',
     ],
     "DEFAULT_PARSER_CLASSED": [
@@ -152,3 +153,6 @@ JWT_AUTH = {
     'JWT_ALLOW_REFRESH': True,
     'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=7)  # default
 }
+
+
+GDAL_LIBRARY_PATH = 'C:\\OSGeo4W64\\bin\\gdal301.dll'

@@ -16,6 +16,7 @@
 JWT авторизация +
 Django Rest Framework +
 PostgreSQL +
-Плюсом будет: Docker(Docker-compose), PyTests
-пермишенсы
-requirements
+Плюсом будет: Docker(Docker-compose) +
+PyTests
+пермишенсы +
+requirements +

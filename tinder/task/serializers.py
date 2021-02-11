@@ -9,17 +9,24 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['username', 'password',]
 
+class UpdateLocationProfileSerializer(serializers.ModelSerializer):
+    """Обновление геолокации"""
+    class Meta:
+        model = Profile
+        fields = ['geo_location']
+
 
 class ProfileSerializer(serializers.ModelSerializer):
     """Для представления информации профиля"""
     user = UserSerializer()
     class Meta:
         model = Profile
-        fields = ['user', 'name', 'pictures', 'age', 'description', 'group']
+        fields = ['user', 'name', 'pictures', 'age', 'description', 'group',]
 
 
 class CreateProfileSerializer(serializers.ModelSerializer):
     """Для создания профиля и заполнения информации"""
+
     class Meta:
         model = Profile
         fields = ['user','name', 'description', 'age', 'pictures', 'group',]
@@ -31,18 +38,6 @@ class LikeSerializer(serializers.ModelSerializer):
         fields = ['like', 'userliker', 'profile']
 
 
-# class AddContentSerializer(serializers.ModelSerializer):
-#     profile = ProfileSerializer()
-#
-#     class Meta:
-#         model = Content
-#         fields = '__all__'
-#
-#
-# class CreateAddContentSerializer(serializers.ModelSerializer):
-#
-#     class Meta:
-#         model = Content
-#         fields = ['profile', 'image', 'description',]
+
 
 
