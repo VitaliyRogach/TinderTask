@@ -9,16 +9,17 @@ from task import service
 
 
 class Profile(models.Model):
-    rate = (
-        ('Base', 'base'),
-        ('Premium', 'premium'),
-        ('VIP', 'vip'),
-    )
+
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     name = models.CharField(max_length=255)
     description = models.TextField("Description", max_length=255)
     pictures = models.ImageField(upload_to='media/')
     age = models.IntegerField(null=False, blank=True)
+    rate = (
+        ('Base', 'base'),
+        ('Premium', 'premium'),
+        ('Vip', 'vip'),
+    )
     group = models.CharField(max_length=255, choices=rate, default='base', null=True)
     geo_location = gis_models.PointField(srid=4326, null=True, blank=True, default=service.get_location())
     def __str__(self):
